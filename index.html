@@ -1,67 +1,134 @@
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-   <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <mastermind-game params="controlObservable: mastermindControl"></mastermind-game>
-    </div>
-
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Mastermind</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./app.js"></script>
+    <meta charset="UTF-8">
+    <title>CodePen - Mastermind (Interactive Game) </title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./style.css">
+
 </head>
-<template id="mastermind-game-template">
-  <div class="mastermind">
-    <div class="mastermind-board">
-      <!-- ko if: DEBUG --><h5 class="text-danger">--DEBUG MODE--</h5><!-- /ko -->
-      <h3>MASTERMIND</h3>
-      <div class="start-button" data-bind="style:{ visibility: playing() ? 'hidden' : 'visible'}">
-         <a href="#" data-bind="click: startGame">Start</a>
-      </div>
-      <div class="mastermind-row" class="master">
-        <div class="pegs"></div>
-      <div class="marbles winning-marbles" data-bind="foreach: winRange">
-          <div class="marble-crater">
-          <div class="marble" data-bind="style:{background: $component.revealing() || $component.DEBUG() ? $component.winningSequence()[$index()] : ''}, css:{ empty: !( $component.DEBUG() || $component.revealing())}">
-          </div>
-          </div>
-        </div>
-      </div>
-      <!-- ko foreach: rowMaster -->
-      <div class="mastermind-row" data-bind="css:{ current: $component.playing() && current }">
-        <div class="pegs">
-          <!-- ko foreach: $component.winRange -->
-          <div class="peg" data-bind="css: $component.getPegClass( $parentContext.$index(), $data )"></div>
-          <!-- /ko -->
-        </div>
-        <div class="marbles" data-bind="foreach: colors"> <div class="marble-crater" data-bind="css:{ selected: $component.playing() && $parent.current && $component.selectedIndex()===$index()}"> 
-          <!-- ko if: $parent.current -->
-             <div class="marble" data-bind="style:{background: $data || ''}, click: $component.selectedIndex.bind( $component, $index()), css:{ empty: !$data }">
+<body>
+    <!-- partial:index.partial.html -->
+    <div class='game'>
+        <h1 class='header'>Mastermind</h1>
+        <div class='top'>
+            <div class='code'>
+                <span class='color-one'></span>
+                <span class='color-two'></span>
+                <span class='color-three'></span>
+                <span class='color-four'></span>
             </div>
-         <!-- /ko -->
-          <!-- ko ifnot: $parent.current -->
-            <div class="marble" data-bind="style:{background: $data || ''}, css:{ empty: !$data }">
-            </div>
-          <!-- /ko -->
-
-          </div>
         </div>
-        <!-- ko if: current -->
-          <div class="marble-buttons" data-bind="visible: $component.playing">
-            <!-- ko foreach: $component.colors -->
-             <div class="marble marble-button" data-bind="style:{background: $data}, click: $component.setColor.bind( $component, $data )"></div>     <!-- /ko -->
-             <a href="#" class="btn btn-block btn-success btn-xs" data-bind="click: $component.submitRow, visible: $component.playing() && $component.fullPlayerTray()">
-              <i class="glyphicon glyphicon-ok"></i>
-            </a>
 
-          </div>
-        <!-- /ko -->
-      </div>
-      <!-- /ko -->
+        <div class='middle'>
+
+            <div class='grid'>
+                <div class='dots1'>
+                    <div class='one1'></div>
+                    <div class='one2'></div>
+                    <div class='one3'></div>
+                    <div class='one4'></div>
+                </div>
+                <div><span class='one-1' id='space'></span></div>
+                <div><span class='one-2' id='space'></span></div>
+                <div><span class='one-3' id='space'></span></div>
+                <div><span class='one-4' id='space'></span></div>
+                <div class='dots2'>
+                    <div class='one1'></div>
+                    <div class='one2'></div>
+                    <div class='one3'></div>
+                    <div class='one4'></div>
+                </div>
+                <div><span class='two-1' id='space'></span></div>
+                <div><span class='two-2' id='space'></span></div>
+                <div><span class='two-3' id='space'></span></div>
+                <div><span class='two-4' id='space'></span></div>
+                <div class='dots3'>
+                    <div class='one1'></div>
+                    <div class='one2'></div>
+                    <div class='one3'></div>
+                    <div class='one4'></div>
+                </div>
+                <div><span class='three-1' id='space'></span></div>
+                <div><span class='three-2' id='space'></span></div>
+                <div><span class='three-3' id='space'></span></div>
+                <div><span class='three-4' id='space'></span></div>
+                <div class='dots4'>
+                    <div class='one1'></div>
+                    <div class='one2'></div>
+                    <div class='one3'></div>
+                    <div class='one4'></div>
+                </div>
+                <div><span class='four-1' id='space'></span></div>
+                <div><span class='four-2' id='space'></span></div>
+                <div><span class='four-3' id='space'></span></div>
+                <div><span class='four-4' id='space'></span></div>
+                <div class='dots5'>
+                    <div class='one1'></div>
+                    <div class='one2'></div>
+                    <div class='one3'></div>
+                    <div class='one4'></div>
+                </div>
+                <div><span class='five-1' id='space'></span></div>
+                <div><span class='five-2' id='space'></span></div>
+                <div><span class='five-3' id='space'></span></div>
+                <div><span class='five-4' id='space'></span></div>
+                <div class='dots6'>
+                    <div class='one1'></div>
+                    <div class='one2'></div>
+                    <div class='one3'></div>
+                    <div class='one4'></div>
+                </div>
+                <div><span class='six-1' id='space'></span></div>
+                <div><span class='six-2' id='space'></span></div>
+                <div><span class='six-3' id='space'></span></div>
+                <div><span class='six-4' id='space'></span></div>
+                <div class='dots7'>
+                    <div class='one1'></div>
+                    <div class='one2'></div>
+                    <div class='one3'></div>
+                    <div class='one4'></div>
+                </div>
+                <div><span class='seven-1' id='space'></span></div>
+                <div><span class='seven-2' id='space'></span></div>
+                <div><span class='seven-3' id='space'></span></div>
+                <div><span class='seven-4' id='space'></span></div>
+                <div class='dots8'>
+                    <div class='one1'></div>
+                    <div class='one2'></div>
+                    <div class='one3'></div>
+                    <div class='one4'></div>
+                </div>
+                <div><span class='eight-1' id='space'></span></div>
+                <div><span class='eight-2' id='space'></span></div>
+                <div><span class='eight-3' id='space'></span></div>
+                <div><span class='eight-4' id='space'></span></div>
+            </div>
+        </div>
+
+        <div class='bottom'>
+            <span class='red' id='color'></span>
+            <span class='yellow' id='color'></span>
+            <span class='green' id='color'></span>
+            <span class='blue' id='color'></span>
+            <span class='black' id='color'></span>
+            <span class='delete'>X</span>
+            <span class='submit'>√</span>
+        </div>
     </div>
+    <div class='rules'>
+        <h1 class='rules-header'>Rules</h1>
+        <div class='content'>
+            <p><span class='obj'>Objective:</span> Crack the hidden code</p>
+            <p><span class='how'>How to Play:</span> The code is a four color code containing the colored buttons displayed. The code may contain multiples of the same color. Try to guess the correct code (color and order) by clicking on the colored buttons and then hitting the submit button. Your guess will then be compared to the code. For every correct color that is in the correct position, a black peg will  be displayed. However, for every correct color that is in the wrong position, a white peg will be displayed. Use this feedback to determine the correct code.</p>
+        </div>
+    </div>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <script src="./script.js"></script>
 
-  </div>
-</template>
+</body>
+</html>
