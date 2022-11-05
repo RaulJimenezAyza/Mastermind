@@ -165,7 +165,7 @@ body {
     place-items: center;
     height: 100%;
     background-color: #D3D3D3;
-    color: white;
+    color: #424242;
     padding-bottom: 50px;
 }
 
@@ -187,6 +187,6 @@ body {
 
 .how, .obj {
     background-color: #9E9E9E;
-    color: white;
+    color: #424242;
     padding: 1px;
 }
