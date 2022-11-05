@@ -19,7 +19,7 @@ body {
 
 .top, .middle, .bottom {
     margin: 0;
-    background: linear-gradient(to right, #9E9E9E 1%, #CECECE 3%, #CECECE 97%, #9E9E9E 99%);
+   background: linear-gradient(to right, #634C75 1%, #9F84B5 3%, #9F84B5 97%, #634C75 99%);
 }
 
 .top, .bottom {
@@ -30,7 +30,7 @@ body {
 
 .top {
     margin-top: 3px;
-    border-bottom: 2px solid #9E9E9E;
+    border-bottom: 2px solid #3A3042;
     display: grid;
     place-items: center;
 }
@@ -72,7 +72,7 @@ body {
 }
 
     .grid > * {
-        border: 1px solid #9E9E9E;
+        border: 1px solid #3A3042;
         display: grid;
         place-items: center;
     }
@@ -86,24 +86,24 @@ body {
 
     .dots1 > div, .dots2 > div, .dots3 > div, .dots4 > div, .dots5 > div, .dots6 > div, .dots7 > div, .dots8 > div {
         width: 10px;
-        box-shadow: inset 0 0.5px 0.5px 0.5px #424242;
+        box-shadow: inset 0 1px 1px 0.5px  #3A3042;
         height: 10px;
-        border: 2px solid #9E9E9E;
+        border: 1.5px solid #826B94;
         border-radius: 20px;
     }
 
 #space {
     width: 25px;
     height: 25px;
-    border: 2px solid #9E9E9E;
+    border: 2px solid #826B94;
     border-radius: 20px;
-    box-shadow: inset 0 1px 1px 0.5px #424242;
+    box-shadow: inset 0 1px 3px 1px  #3A3042;
 }
 
 .bottom {
     margin-bottom: 50px;
-    border-bottom: 5px solid #9E9E9E;
-    border-top: 2px solid #9E9E9E;
+    border-bottom: 5px solid #3A3042;
+    border-top: 2px solid #3A3042;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -117,8 +117,8 @@ body {
     width: 27px;
     height: 27px;
     margin: 0 7px;
-    border: 2px solid #9E9E9E;
-    border-radius: 20px;
+    border: 3px solid #634C75;
+    border-radius: 10px;
 }
 
     .bottom > span:hover {
