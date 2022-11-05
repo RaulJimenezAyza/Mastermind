@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Mastermind (Interactive Game) </title>
+    <title>Mastermind</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
@@ -10,7 +10,6 @@
 
 </head>
 <body>
-    <!-- partial:index.partial.html -->
     <div class='game'>
         <h1 class='header'>Mastermind</h1>
         <div class='top'>
@@ -119,13 +118,12 @@
         </div>
     </div>
     <div class='rules'>
-        <h1 class='rules-header'>Rules</h1>
+        <h1 class='rules-header'>The Game:</h1>
         <div class='content'>
             <p><span class='obj'>Objective:</span> Discover the secret code by trying different color combinations</p>
             <p><span class='how'>How to Play:</span> A four-color code containing the buttons is displayed. The code can contain multiples of the same color. The game is about trying to guess the correct code (color and order) by clicking on the colored buttons and then pressing the submit button (green tik). Your guess will be compared to the code. For each correct color that is in the correct position, a black peg will be displayed. However, for each correct color that is in the wrong position, a white peg will be displayed. Use this information to determine the correct code.</p>
         </div>
     </div>
-    <!-- partial -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
     <script src="./app.js"></script>
