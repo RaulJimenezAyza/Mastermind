@@ -19,7 +19,7 @@ body {
 
 .top, .middle, .bottom {
     margin: 0;
-    background: linear-gradient(to right, #9E9E9E 1%, #CECECE 3%, #CECECE 97%, #9E9E9E 99%);
+    background: linear-gradient(to right, #9E9E9E 5%, #CECECE 5%, #CECECE 95%, #9E9E9E 95%);
 }
 
 .top, .bottom {
