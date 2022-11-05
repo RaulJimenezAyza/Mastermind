@@ -1,79 +1,114 @@
-﻿.tableroEntero{
-    border: 5px solid black;
-    background-color: black;
-    height:850px;
-    width:400px;
-    position: absolute;
-}
+﻿@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,900,900italic,300);
 
-.tablero{
-    display: grid;
-    width:292.72px;
-    height: 100%;
-    float: left;
+body{
+  background: #333;
 }
-.soluciones{
-    display:grid;
-    height:100%;
-    width:20%;
-    float:right;
-    margin-top:0px;
-}
-
-.mesaDeColores{
-    display:grid;
-    grid-template-columns:repeat(2, 100px);
-    grid-template-rows: repeat(3, 100px);
-    width:200px;
-    height:300px;
-    border:5px solid black;
-    margin: 0 auto;
-    margin-top: 10px;
-}
-
-.colorSeleccionado{
-    display: grid;
-    grid-template-columns:repeat(4,50px);
-    grid-template-rows:repeat(1, 50px);
-    width:200px;
-    height:50px;
-    border: 5px solid black;
-    margin:0 auto;
-    margin-top: 10px;
-}
-
-.colorSecreto{
-    background-color: black;
-}
-
-.entrar{
+.mastermind{
+  font-family: "Alegreya Sans SC", Arial;
+  min-height: 500px;
+  padding: 30px;
+  overflow: hidden;
+  position: relative;
+  .mastermind-board{
+    border-radius: 10px;
     width: 200px;
-    height: 50px;
-    border: 5px solid black;
-    margin: 0 auto;
-    margin-top: 10px;
-    font-size:48px;
-    text-align:center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color:gray;
-    opacity:.7;
-}
+    margin: auto;
+    padding: 5px 2px;
+    background: #D0C3B0;
+    border: 1px solid #4C3434;
+    box-shadow: 2px 2px 5px 1px rgba(173, 173, 173, .37 );
+    text-align: center;
+    h3, h5{
+      margin: 5px 0;
+    }
+    .start-button{
+      line-height: 30px;
+      a{
+        font-size: 20px;
 
-.entrar:hover{
-    cursor:pointer;
-    opacity:1;
-}
-
-.colores{
-    margin-left: 100px;
-}
-.codigo{
-    display:grid;
-    grid-template-columns: repeat(4, 50px);
-    grid-template-rows: repeat(1, 50px);
-    width:200px;
-    height:50px;
-    border:5px solid black;
-    margin: 0 auto;
-    margin-top: 10px;
+      }
+    }
+    .mastermind-row{
+      position: relative;
+      padding: 3px;
+      &.current{
+        background: lighten( #D0C3B0, 9 );
+      }
+      .marbles, .pegs{
+        display: inline-block;
+        vertical-align: middle;
+        &.winning-marbles{
+          border: 1px solid #555;
+          border-radius: 10px;
+        }
+      }
+      .marble-crater{
+        display: inline-block;
+        width:30px;
+        padding: 5px 0;
+        text-align: center;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid rgba(255, 255, 255, 0 );
+        &.selected{
+          box-shadow: 0 0 6px 1px #666;
+          .marble{
+            background: #ccc;
+          }
+        }
+      }
+    }
+  }
+  .pegs{
+    width: 20px;
+    .peg{
+      display: block;
+      float: left;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin: 2px;
+      background: darken( #9C8C8C, 5 );
+      &.correct{ background: #000;}
+      &.misplaced{ background: #fff; }
+    }
+  }
+  .marble{
+    width: 20px;
+    height: 20px;
+    background: #888;
+    border: 1px solid #444;
+    border-radius: 50%;
+    margin: auto;
+    vertical-align:middle;
+    &.empty{
+      width: 15px;
+      height: 15px;
+      
+    }
+  }
+  .marble-buttons{
+    position: absolute;
+    left: 100%;
+    top: -25%;
+    width: 100px;
+    user-select: none;
+    border-radius: 10px;
+    background: darken( #fff, 2 );
+    border: 1px solid #aaa;
+    box-shadow: 1px 1px 4px 1px rgba( 122, 122, 122, .8 );
+    padding: 3px;
+    .marble-button{
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      user-select: none;
+      display: inline-block;
+      margin: 3px;
+      margin: 1px;
+    }
+  }
+  .game-info{
+    margin-left: 200px;
+  }
 }
