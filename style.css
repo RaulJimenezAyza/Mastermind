@@ -148,8 +148,8 @@ body {
 .delete {
     display: grid;
     place-items: center;
-    color: black;
-    font-weight: bolder;
+     color: rgb(255, 255, 255);
+    background-color: rgb(255, 0, 0);
 }
 
 .submit {
