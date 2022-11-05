@@ -13,7 +13,7 @@ body {
 
 .header {
     color: #424242;
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 40px;
 }
 
@@ -29,7 +29,7 @@ body {
 }
 
 .top {
-    margin-top: 30px;
+    margin-top: 3px;
     border-bottom: 2px solid #9E9E9E;
     display: grid;
     place-items: center;
