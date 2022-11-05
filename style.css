@@ -164,7 +164,7 @@ body {
     display: grid;
     place-items: center;
     height: 100%;
-    background-color: black;
+    background-color: #D3D3D3;
     color: white;
     padding-bottom: 50px;
 }
