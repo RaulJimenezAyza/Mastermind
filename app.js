@@ -11,8 +11,6 @@ class Row {
         this.spaces = [];
     }
 }
-
-// create row instances
 const row1 = new Row();
 const row2 = new Row();
 const row3 = new Row();
@@ -22,23 +20,16 @@ const row6 = new Row();
 const row7 = new Row();
 const row8 = new Row();
 
-
-//generate random colors
 for (i = 0; i < 4; i++) {
     code.push(colors[Math.floor(Math.random() * 5)]);
 }
+console.log(code);//para enseñar la solcion en la consola
 
-//create copy of code
 let code1 = [...code];
-
-// show random colors
 function bgColor(e, c) {
     $(`${e}`).css('background-color', `${c}`);
 }
-
-// check the row
 function checkRow(arr, row, next, prev) {
-    // check if answer === code
     if (arr.join("") === code.join("")) {
         won = true;
         $('.code > span').slideDown();
@@ -47,7 +38,6 @@ function checkRow(arr, row, next, prev) {
             $(`.dots${row} > .one${i + 1}`).css('background-color', 'black');
         }
     } else {
-        // check for black pegs 
         for (i = 0; i < arr.length; i++) {
             if (arr[i] === code[i]) {
                 $(`.dots${row} > .one${counter2}`).css('background-color', 'black');
@@ -58,7 +48,6 @@ function checkRow(arr, row, next, prev) {
                 remaining.push(arr[i]);
             }
         }
-        //check for white pegs
         for (i = 0; i < arr.length; i++) {
             if (code1.includes(remaining[i])) {
                 code1.splice(code1.indexOf(remaining[i]), 1, "blank");
@@ -66,7 +55,6 @@ function checkRow(arr, row, next, prev) {
                 counter2 += 1;
             }
         }
-        //reset to defaults + switch turns
         counter = 1;
         counter2 = 1;
         next.turn = true;
@@ -76,18 +64,13 @@ function checkRow(arr, row, next, prev) {
     }
 }
 
-// add background color of code to the divs
 bgColor('.color-one', `${code[0]}`);
 bgColor('.color-two', `${code[1]}`);
 bgColor('.color-three', `${code[2]}`);
 bgColor('.color-four', `${code[3]}`);
 
-//gameplay
-
-//start game
 row8.turn = true;
 
-//add picked colors to board and appropriate arrays
 $('.bottom > span').on('click', (e) => {
     let clickedItem = e.target;
     if (clickedItem.className !== 'delete' && clickedItem.className !== 'submit') {
@@ -127,7 +110,6 @@ $('.bottom > span').on('click', (e) => {
     }
 });
 
-// remove color from board and appropriate arrays
 $('.delete').on('click', () => {
     if (won === false) {
         if (row8.turn && counter > 1) {
@@ -165,8 +147,6 @@ $('.delete').on('click', () => {
         }
     }
 });
-
-// initate check function to compare row to codes
 $('.submit').on('click', () => {
     if (row8.turn && row8.spaces.length === 4) {
         checkRow(row8.spaces, 8, row7, row8);
