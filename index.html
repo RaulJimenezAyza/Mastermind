@@ -1,43 +1,61 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Mastermind</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!--libreria jquery-->
-    <script src="./app.js"></script>
-</head>
-<body>
-    <div class="contenido">
-        <div class="tableroEntero">
-            <div class="tablero">
-
-            </div> 
-            <div class="soluciones">
-
-            </div>
-        </div>
-        <div class="colores">
-            <div class="codigo">
-                <div class="colorSecreto" id="colorSecreto1"></div>
-                <div class="colorSecreto" id="colorSecreto2"></div>
-                <div class="colorSecreto" id="colorSecreto3"></div>
-                <div class="colorSecreto" id="colorSecreto4"></div>
-            </div>
-            <div class="mesaDeColores">
-                <div class="color" id="blue"></div>
-                <div class="color" id="green"></div>
-                <div class="color" id="red"></div>
-                <div class="color" id="yellow"></div>
-                <div class="color" id="orange"></div>
-                <div class="color" id="pink"></div>
-            </div>
-            <div class="colorSeleccionado">
-
-            </div>
-            <div class="entrar">Entrar</div>
-        </div>
+﻿<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <mastermind-game params="controlObservable: mastermindControl"></mastermind-game>
     </div>
-</body>
-</html>
+
+  </div>
+</div>
+
+<template id="mastermind-game-template">
+  <div class="mastermind">
+    <div class="mastermind-board">
+      <!-- ko if: DEBUG --><h5 class="text-danger">--DEBUG MODE--</h5><!-- /ko -->
+      <h3>MASTERMIND</h3>
+      <div class="start-button" data-bind="style:{ visibility: playing() ? 'hidden' : 'visible'}">
+         <a href="#" data-bind="click: startGame">Start</a>
+      </div>
+      <div class="mastermind-row" class="master">
+        <div class="pegs"></div>
+      <div class="marbles winning-marbles" data-bind="foreach: winRange">
+          <div class="marble-crater">
+          <div class="marble" data-bind="style:{background: $component.revealing() || $component.DEBUG() ? $component.winningSequence()[$index()] : ''}, css:{ empty: !( $component.DEBUG() || $component.revealing())}">
+          </div>
+          </div>
+        </div>
+      </div>
+      <!-- ko foreach: rowMaster -->
+      <div class="mastermind-row" data-bind="css:{ current: $component.playing() && current }">
+        <div class="pegs">
+          <!-- ko foreach: $component.winRange -->
+          <div class="peg" data-bind="css: $component.getPegClass( $parentContext.$index(), $data )"></div>
+          <!-- /ko -->
+        </div>
+        <div class="marbles" data-bind="foreach: colors"> <div class="marble-crater" data-bind="css:{ selected: $component.playing() && $parent.current && $component.selectedIndex()===$index()}"> 
+          <!-- ko if: $parent.current -->
+             <div class="marble" data-bind="style:{background: $data || ''}, click: $component.selectedIndex.bind( $component, $index()), css:{ empty: !$data }">
+            </div>
+         <!-- /ko -->
+          <!-- ko ifnot: $parent.current -->
+            <div class="marble" data-bind="style:{background: $data || ''}, css:{ empty: !$data }">
+            </div>
+          <!-- /ko -->
+
+          </div>
+        </div>
+        <!-- ko if: current -->
+          <div class="marble-buttons" data-bind="visible: $component.playing">
+            <!-- ko foreach: $component.colors -->
+             <div class="marble marble-button" data-bind="style:{background: $data}, click: $component.setColor.bind( $component, $data )"></div>     <!-- /ko -->
+             <a href="#" class="btn btn-block btn-success btn-xs" data-bind="click: $component.submitRow, visible: $component.playing() && $component.fullPlayerTray()">
+              <i class="glyphicon glyphicon-ok"></i>
+            </a>
+
+          </div>
+        <!-- /ko -->
+      </div>
+      <!-- /ko -->
+    </div>
+
+  </div>
+</template>
