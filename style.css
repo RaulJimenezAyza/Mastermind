@@ -1,5 +1,3 @@
-/* Variables */
-/* Mixins */
 body {
     margin: 0;
     padding: 0;
@@ -8,7 +6,7 @@ body {
 
 .game {
     height: 100%;
-    background-color: #000;
+    background-color: #D3D3D3;
     display: grid;
     place-items: center;
 }
@@ -19,7 +17,6 @@ body {
     font-size: 40px;
 }
 
-/* Board Styles */
 .top, .middle, .bottom {
     margin: 0;
     background: linear-gradient(to right, #9E9E9E 1%, #CECECE 3%, #CECECE 97%, #9E9E9E 99%);
@@ -31,7 +28,6 @@ body {
     border-radius: 10px;
 }
 
-/* Top of Board */
 .top {
     margin-top: 30px;
     border-bottom: 2px solid #9E9E9E;
@@ -81,7 +77,6 @@ body {
         place-items: center;
     }
 
-/* forgive the redudant code! */
 .dots1, .dots2, .dots3, .dots4, .dots5, .dots6, .dots7, .dots8 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -105,7 +100,6 @@ body {
     box-shadow: inset 0 1px 1px 0.5px #424242;
 }
 
-/* Bottom of Board */
 .bottom {
     margin-bottom: 50px;
     border-bottom: 5px solid #9E9E9E;
@@ -135,7 +129,6 @@ body {
         transform: scale(0.95);
     }
 
-/* button colors */
 .yellow {
     background-color: yellow;
 }
